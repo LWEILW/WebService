@@ -1,0 +1,56 @@
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://bokesoft.com/dee/service/" xmlns:intf="http://bokesoft.com/dee/service/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bokesoft.com/dee/service/">
+    <!--
+   WSDL created by Apache Axis version: 1.4
+   Built on Apr 22, 2006 (06:55:48 PDT)
+   -->
+    <wsdl:message name="deeServiceHvResponse">
+        <wsdl:part name="deeServiceHvReturn" type="xsd:string"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deeServiceResponse">
+        <wsdl:part name="deeServiceReturn" type="xsd:string"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deeServiceHvRequest">
+        <wsdl:part name="xml" type="xsd:string"> </wsdl:part>
+        <wsdl:part name="action" type="xsd:string"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deeServiceRequest">
+        <wsdl:part name="xml" type="xsd:string"> </wsdl:part>
+        <wsdl:part name="action" type="xsd:string"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="BokeDeeServiceWS">
+        <wsdl:operation name="deeService" parameterOrder="xml action">
+            <wsdl:input message="impl:deeServiceRequest" name="deeServiceRequest"> </wsdl:input>
+            <wsdl:output message="impl:deeServiceResponse" name="deeServiceResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deeServiceHv" parameterOrder="xml action">
+            <wsdl:input message="impl:deeServiceHvRequest" name="deeServiceHvRequest"> </wsdl:input>
+            <wsdl:output message="impl:deeServiceHvResponse" name="deeServiceHvResponse"> </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="deeSpServiceSoapBinding" type="impl:BokeDeeServiceWS">
+        <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="deeService">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="deeServiceRequest">
+                <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://bokesoft.com/dee/service/" use="encoded"/>
+            </wsdl:input>
+            <wsdl:output name="deeServiceResponse">
+                <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://bokesoft.com/dee/service/" use="encoded"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deeServiceHv">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="deeServiceHvRequest">
+                <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://bokesoft.com/dee/service/" use="encoded"/>
+            </wsdl:input>
+            <wsdl:output name="deeServiceHvResponse">
+                <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://bokesoft.com/dee/service/" use="encoded"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="BokeDeeServiceWSService">
+        <wsdl:port binding="impl:deeSpServiceSoapBinding" name="deeSpService">
+            <wsdlsoap:address location="http://10.1.20.41:48000/BokeDee/services/deeSpService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
